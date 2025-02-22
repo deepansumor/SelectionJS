@@ -16,6 +16,7 @@ SelectionJS is a lightweight JavaScript library for handling text selection and 
 ### CDN
 ```html
 <script src="../dist/selection.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/deepansumor/SelectionJS@latest/dist/selection.min.js"></script>
 ```
 
 ### NPM
