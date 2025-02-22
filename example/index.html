@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SelectionJS Test</title>
+    <style>
+        .editor {
+            width: 80%;
+            min-height: 150px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 20px auto;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>SelectionJS Live Test</h2>
+    <textarea contenteditable="true" class="editor" id="editor">Try selecting and modifying this text.</textarea>
+    <div contenteditable="true" class="editor" id="editor1">Try selecting and modifying this text.</div>
+
+    <button onclick="modifyText('append', '!!')">Append</button>
+    <button onclick="modifyText('prepend', '**')">Prepend</button>
+    <button onclick="modifyText('replace', 'NEW TEXT')">Replace</button>
+    <button onclick="modifyText('wrap', '<b>$</b>')">Wrap in Bold</button>
+
+    <script src="../dist/selection.js"></script>
+    <script>
+        const selection = window.SelectionJS;
+        
+        function modifyText(action, text) {
+            if (!selection) return;
+            // selection.modify({ action, text });
+        }
+        selection.on('select', function ({ modify }) {
+            modify({ action: "wrap", text: "<b> $ </b>" })
+        })
+    </script>
+</body>
+
+</html>

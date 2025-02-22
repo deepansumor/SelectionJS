@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SelectionJS Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            background-color: #f4f4f4;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        pre {
+            background: #333;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .container {
+            border: 1px solid #ccc;
+            padding: 10px;
+            min-height: 50px;
+            background: white;
+        }
+        button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>SelectionJS Documentation</h1>
+    <p>A JavaScript library for handling text selection and modifications.</p>
+    
+    <h2>Installation</h2>
+    <pre>&lt;script src="selection.js"&gt;&lt;/script&gt;</pre>
+    
+    <h2>Configuration</h2>
+    <p>You can configure SelectionJS with the following options:</p>
+    <pre>
+SelectionJS.configure({
+    container: [document.getElementById("editor1"), document.getElementById("editor2")],
+    wrapperPlaceholder: "$"
+});
+    </pre>
+    
+    <h2>Usage</h2>
+    <p>Example of modifying selected text:</p>
+    <pre>
+SelectionJS.on("select", (context) => {
+    context.modify({ action: "wrap", text: "**Bold**", wrapper: "<b>$</b>" });
+});
+    </pre>
+    
+    <h2>Interactive Demo</h2>
+    <p>Select text inside the container and apply modifications.</p>
+    <div id="editor1" class="container" contenteditable="true">Try selecting this text.</div>
+    <div id="editor2" class="container" contenteditable="true">Another editable area.</div>
+    <button onclick="wrapText()">Wrap in Bold</button>
+    <button onclick="prependText()">Prepend Text</button>
+    <button onclick="appendText()">Append Text</button>
+    
+    <script src="../dist/selection.js"></script>
+    <script>
+        SelectionJS.configure({
+            container: [document.getElementById("editor1"), document.getElementById("editor2")],
+            wrapperPlaceholder: "$"
+        });
+        
+        function wrapText() {
+            SelectionJS.modify({ action: "wrap", text: "<b>$</b>" });
+        }
+        
+        function prependText() {
+            SelectionJS.modify({ action: "prepend", text: "[PREPENDED] " });
+        }
+        
+        function appendText() {
+            SelectionJS.modify({ action: "append", text: " [APPENDED]" });
+        }
+    </script>
+</body>
+</html>
